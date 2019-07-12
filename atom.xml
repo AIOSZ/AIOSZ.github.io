@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aiosz.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-12T11:44:26.615Z</updated>
+    <updated>2019-07-12T12:07:44.142Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aiosz.github.io"/>
     <link rel="self" href="https://aiosz.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://aiosz.github.io/images/avatar.png</logo>
     <icon>https://aiosz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[My Frist]]></title>
+        <id>https://aiosz.github.io/post/my-frist</id>
+        <link href="https://aiosz.github.io/post/my-frist">
+        </link>
+        <updated>2019-07-12T11:48:50.000Z</updated>
+        <summary type="html"><![CDATA[<p>this is my first blog!</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>this is my first blog!</p>
+<!-- more -->
+<p>123</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://aiosz.github.io/post/hello-gridea</id>
