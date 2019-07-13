@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1562998255015">
+<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1562999420203">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://aiosz.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://aiosz.github.io">
-        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1562998255015" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1562999420203" alt="" width="32px" height="32px">
       </a>
       <a href="https://aiosz.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -112,11 +112,12 @@
 这是我苹果手机上用到的开发者计算器</p>
 <h2 id="开始分析工作">开始分析工作</h2>
 <p>4位为一组，发现第一组没有变化，而第二组就开始有变化了，根据常用的套路，我确定这是倒序的金额</p>
-<p>D200 = 2.1￥
+<pre><code>D200 = 2.1￥
 F24E = 202.1￥
 DE49 =189.1￥
 4E48 =185.1￥
-转化规律是修改数据位置，然后进行16进制转10进制</p>
+</code></pre>
+<p>转化规律是修改数据位置，然后进行16进制转10进制</p>
 <pre><code>ABCD → CDAB
 </code></pre>
 <p>开始实例</p>
