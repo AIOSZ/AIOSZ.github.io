@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aiosz.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-13T17:32:18.707Z</updated>
+    <updated>2019-07-13T17:38:04.766Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aiosz.github.io"/>
     <link rel="self" href="https://aiosz.github.io/atom.xml"/>
@@ -31,14 +31,9 @@
 这是我苹果手机上用到的开发者计算器</p>
 <h2 id="开始分析工作">开始分析工作</h2>
 <p>4位为一组，发现第一组没有变化，而第二组就开始有变化了，根据常用的套路，我确定这是倒序的金额</p>
-<pre><code>D200 = 2.1￥
-F24E = 202.1￥
-DE49 =189.1￥
-4E48 =185.1￥
-</code></pre>
+<p><code>D200 = 2.1￥ F24E = 202.1￥ DE49 =189.1￥ 4E48 =185.1￥</code></p>
 <p>转化规律是修改数据位置，然后进行16进制转10进制</p>
-<pre><code>ABCD → CDAB
-</code></pre>
+<p><code>ABCD → CDAB</code></p>
 <p>开始实例</p>
 <p><strong>D200 → 00D2 → 进制转化</strong></p>
 <p>进制转化可以使用网页版的进制转化，而我是使用苹果手机的开发者计算器
@@ -49,7 +44,7 @@ DE49 =189.1￥
 <p><strong>F24E → 4EF2 →进制转化</strong></p>
 <p><img src="https://aiosz.github.io/post-images/1562994017252.png" alt=""></p>
 <p>DEC栏里面有我们需要的数据，缩小百倍，就是我们的202.1￥</p>
-<p>我知道最后面的一组数据是校验位，但中间的数据我分析了好久好久，在一次偶然的机会下，我发现这东西<strong>有时候会变化，有时候不变</strong>(重点)，收集了很多很多组数据后，我发现这只是记录最后一次消费机器的编号和消费次数记录。</p>
+<p>我知道最后面的一组数据是校验位，但中间的数据我分析了好久好久。在一次偶然的机会下，我发现这中间这组数据<strong>有时候会变化，有时候不变</strong>(重点)，收集了很多很多组数据后，我发现这只是记录最后一次消费机器的编号和消费次数记录。</p>
 <h3 id="校验位">校验位</h3>
 <p>当时的这个校验位计算想起来也包含了太多运气，那时候用的是网页版本。
 一次偶然，就<strong>随便</strong>(运气)把数据填到所谓的校验位计算</p>
@@ -64,8 +59,7 @@ DE49 =189.1￥
 <h3 id="得出结论">得出结论</h3>
 <p>第一组 <strong>3B30</strong> 不可变</p>
 <p>第二组 金额使用倒序，可以自行算出金额以及修改数据</p>
-<pre><code>        中间一大段是最后一次使用消费机器的编号以及消费次数，
-</code></pre>
+<p>中间一大段是最后一次使用消费机器的编号以及消费次数，</p>
 <p>最后一组 校验位，编辑好前面几组数据后根据CRC-CCIT(XModem)算出校验位</p>
 <h2 id="动手实践">动手实践</h2>
 <p>开始构造一条 <strong>98.54￥</strong> 的数据</p>
@@ -81,7 +75,7 @@ DE49 =189.1￥
 <p>接下来是校验位计算</p>
 <p><a href="https://www.lammertbies.nl/comm/info/crc-calculation.html">点我进入校验计算网站</a></p>
 <p><img src="https://aiosz.github.io/post-images/1563004226661.png" alt=""></p>
-<p>得出<strong>4CAC</strong>，抄上</p>
+<p>得出<strong>4CAC</strong>，抄上。注意勾选hex，因为默认是ASCII，我们是数据是十六进制，所以需要勾选成hex。</p>
 <p><strong>3B30 7E26 00710006900100000000 4CAC</strong></p>
 <p>数据构造完成！</p>
 ]]></content>
