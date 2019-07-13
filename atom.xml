@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aiosz.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-13T17:41:12.769Z</updated>
+    <updated>2019-07-13T18:54:50.780Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aiosz.github.io"/>
     <link rel="self" href="https://aiosz.github.io/atom.xml"/>
@@ -83,6 +83,37 @@
 <p>得出<strong>4CAC</strong>，抄上。注意勾选hex，因为默认是ASCII，我们是数据是十六进制，所以需要勾选成hex。</p>
 <p><strong>3B30 7E26 00710006900100000000 4CAC</strong></p>
 <p>数据构造完成！</p>
+<h2 id="数据分析-no2">数据分析 NO.2</h2>
+<p>下面开始分析另一种算法</p>
+<p><img src="https://aiosz.github.io/post-images/1563042402980.png" alt=""></p>
+<p>图中的数据虽然是手动构造的，但他也有分析与学习的价值。
+第一处就是金额，方法也和上面的一样，<strong>ABCD → CDAB</strong>
+位置的颠倒与进制的转化，例：
+第一组数据的金额 E803，
+先 根据 <strong>ABCD → CDAB</strong> 把<strong>E803</strong>变成<strong>03E8</strong>
+检验： 我们先打开<a href="http://tool.oschina.net/hexconvert/">进制转换的网站</a>勾选好进制选项。</p>
+<p><img src="https://aiosz.github.io/post-images/1563042852178.png" alt=""></p>
+<p>缩小百倍后正好是我们的<strong>10￥</strong></p>
+<p>第二处的数据我也是在一次偶然的机会找到解决方法</p>
+<p>关键是第 2，4组数据 ，金额位里面有<strong>重复字符</strong> ，而且第二处的数据里面也出现<strong>重复字符</strong>，我肯定这不是巧合，是可以合在一起的</p>
+<p>D<strong>00</strong>7 对应 2<strong>FF</strong>8
+A<strong>00</strong>F 对应 5<strong>FF</strong>0</p>
+<p>思考良久后我尝试加一起，</p>
+<p>D007 + 2FF8  = FFFF
+A00F  + 5FF0  = FFFF</p>
+<p>我把其他组的数据也试着加一起，然后成功了，每一组的第一处和第二处相加必定等于<strong>FFFF</strong></p>
+<p>第三组的数据和第一组数据一样</p>
+<h2 id="动手时间">动手时间</h2>
+<p>下面我们尝试构造一条<strong>97.14￥</strong>的数据</p>
+<p><strong>97.14￥ → 9714 → 进制转化 → 颠倒排列 → 运算第二处的数据 →把不变化的数据也抄上</strong></p>
+<p><img src="https://aiosz.github.io/post-images/1563043742748.png" alt=""></p>
+<p>把得到的结果变换一下位置</p>
+<p>25F2→F225</p>
+<p>运算第二处数据</p>
+<p>FFFF - F225 =0DDA</p>
+<p>把第三组数据和不变的数据抄上就可以得到完整数据了</p>
+<p><strong>F225</strong> ECFF <strong>0DDA</strong> 1300 <strong>F225</strong> ECFF00FF00FF</p>
+<p>搞定</p>
 ]]></content>
     </entry>
     <entry>
