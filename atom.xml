@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aiosz.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-13T17:38:04.766Z</updated>
+    <updated>2019-07-13T17:41:12.769Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aiosz.github.io"/>
     <link rel="self" href="https://aiosz.github.io/atom.xml"/>
@@ -27,11 +27,16 @@
 这是收集到的几组数据</p>
 <p><img src="https://aiosz.github.io/post-images/1562963097120.png" alt="">
 这是MI6手机上的读卡软件</p>
-<p><img src="https://aiosz.github.io/post-images/1562963275650.png" alt="">
+<p><img src="https://aiosz.github.io/post-images/1563039525079.png" alt="">
 这是我苹果手机上用到的开发者计算器</p>
 <h2 id="开始分析工作">开始分析工作</h2>
 <p>4位为一组，发现第一组没有变化，而第二组就开始有变化了，根据常用的套路，我确定这是倒序的金额</p>
-<p><code>D200 = 2.1￥ F24E = 202.1￥ DE49 =189.1￥ 4E48 =185.1￥</code></p>
+<p>`</p>
+<p>D200 = 2.1￥</p>
+<p>F24E = 202.1￥</p>
+<p>DE49 =189.1￥</p>
+<p>4E48 =185.1￥</p>
+<p>`</p>
 <p>转化规律是修改数据位置，然后进行16进制转10进制</p>
 <p><code>ABCD → CDAB</code></p>
 <p>开始实例</p>
