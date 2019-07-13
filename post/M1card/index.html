@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1563004342281">
+<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1563039136227">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://aiosz.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://aiosz.github.io">
-        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1563004342281" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1563039136227" alt="" width="32px" height="32px">
       </a>
       <a href="https://aiosz.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -121,36 +121,37 @@ DE49 =189.1￥
 <pre><code>ABCD → CDAB
 </code></pre>
 <p>开始实例</p>
-<p><strong>D200 → 00D2 → 进制转化</strong>
-进制转化可以使用网页版的进制转化，而我是使用苹果手机的开发者计算器
+<p><strong>D200 → 00D2 → 进制转化</strong></p>
+<p>进制转化可以使用网页版的进制转化，而我是使用苹果手机的开发者计算器
 <img src="https://aiosz.github.io/post-images/1562964153384.png" alt="">
 0是无意义字符，所以打不出来，DEC栏处就是我们需要的十进制数字，与我们的计数方法不一样，他是直接把小数点去掉，扩大百倍 。<strong>210</strong>缩小百倍后，就是我们现在金额<strong>2.1￥</strong></p>
-<p>开始实例 NO.2
-<code>ABCD → CDAB</code>
-<strong>F24E → 4EF2 →进制转化</strong>
-<img src="https://aiosz.github.io/post-images/1562994017252.png" alt="">
-DEC栏里面有我们需要的数据，缩小百倍，就是我们的202.1￥</p>
-<p>我知道最后面的一组数据是校验位，但中间的数据我分析了好久好久，在一次偶然的机会下，我发现这东西有时候会变化，有时候不变，收集了很多很多组数据后，我发现这只是记录最后一次消费机器的编号和消费次数记录。</p>
+<p>开始实例 NO.2</p>
+<p><code>ABCD → CDAB</code></p>
+<p><strong>F24E → 4EF2 →进制转化</strong></p>
+<p><img src="https://aiosz.github.io/post-images/1562994017252.png" alt=""></p>
+<p>DEC栏里面有我们需要的数据，缩小百倍，就是我们的202.1￥</p>
+<p>我知道最后面的一组数据是校验位，但中间的数据我分析了好久好久，在一次偶然的机会下，我发现这东西<strong>有时候会变化，有时候不变</strong>(重点)，收集了很多很多组数据后，我发现这只是记录最后一次消费机器的编号和消费次数记录。</p>
 <h3 id="校验位">校验位</h3>
 <p>当时的这个校验位计算想起来也包含了太多运气，那时候用的是网页版本。
-一次偶然，就随便把数据填到所谓的校验位计算</p>
+一次偶然，就<strong>随便</strong>(运气)把数据填到所谓的校验位计算</p>
 <p><img src="https://aiosz.github.io/post-images/1563001885613.png" alt=""></p>
-<p>3B30 D200 00710006900100000000 <strong>C55F</strong>   2.1￥
-看图片，这个校验位就符合CRC-CCIT(XModem)</p>
+<p>3B30 D200 00710006900100000000 <strong>C55F</strong>   2.1￥</p>
+<p>看图片，这个校验位就符合CRC-CCIT(XModem)</p>
 <p><strong>数据 NO.2</strong></p>
 <p><img src="https://aiosz.github.io/post-images/1563002187480.png" alt=""></p>
 <p>3B30 F24E 00720006900100000000 <strong>9114</strong>   202.1￥</p>
 <p>这组也符合CRC-CCIT(XModem)</p>
 <p><a href="https://www.lammertbies.nl/comm/info/crc-calculation.html">点我，进入校验位计算</a></p>
 <h3 id="得出结论">得出结论</h3>
-<p>第一组 <strong>3B30</strong> 不可变
-第二组 金额使用倒序，可以自行算出金额以及修改数据
-中间一大段是最后一次使用消费机器的编号以及消费次数，
-最后一组 校验位，编辑好前面几组数据后根据CRC-CCIT(XModem)算出校验位</p>
+<p>第一组 <strong>3B30</strong> 不可变</p>
+<p>第二组 金额使用倒序，可以自行算出金额以及修改数据</p>
+<pre><code>        中间一大段是最后一次使用消费机器的编号以及消费次数，
+</code></pre>
+<p>最后一组 校验位，编辑好前面几组数据后根据CRC-CCIT(XModem)算出校验位</p>
 <h2 id="动手实践">动手实践</h2>
-<p>开始构造一条 <strong>98.54￥</strong> 的数据
-<strong>3B30</strong> 照抄
-金额部分  <strong>98.54￥ → 9854 → 十进制转十六进制 → 【ABCD→CDAB】</strong></p>
+<p>开始构造一条 <strong>98.54￥</strong> 的数据</p>
+<p><strong>3B30</strong> 照抄</p>
+<p>金额部分  <strong>98.54￥ → 9854 → 十进制转十六进制 → 【ABCD→CDAB】</strong></p>
 <p><img src="https://aiosz.github.io/post-images/1563003251675.png" alt=""></p>
 <p>如图，转化完成后是 <strong>267E</strong> ，倒序换后是 <strong>7E26</strong></p>
 <p>我们有了两组数据  <strong>3B30   7E26</strong> ，接下来把消费机器编号的旧数据抄上</p>
