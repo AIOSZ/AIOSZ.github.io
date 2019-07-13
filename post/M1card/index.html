@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Hello Gridea | Gridea</title>
+<title>一次M1卡数据分析 | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,51 +80,59 @@
       <div class="content-container">
         <div class="post-detail">
           
-            <div class="feature-container" style="background-image: url('https://aiosz.github.io/post-images/hello-gridea.png')">
-            </div>
-          
-          <h2 class="post-title">Hello Gridea</h2>
+          <h2 class="post-title">一次M1卡数据分析</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2018-12-12</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://aiosz.github.io/tag/gridea">
-                    Gridea
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2019-07-13</span>
             
           </div>
           <div class="post-content">
-            <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+            <p>在一次偶然的机会下，我解开了它的秘密...........</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="http://hvenotes.fehey.com/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>𝖶𝗂𝗇𝖽𝗈𝗐𝗌</strong> 或 <strong>𝖬𝖺𝖼𝖮𝖲</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<h1 id="开始工作">开始工作</h1>
+<h2 id="数据的获取">数据的获取</h2>
+<p>我使用ACR-122U，mfoc ，MI6 ，MIFARE，完成了M1卡数据收集
+<img src="https://aiosz.github.io/post-images/1562963036454.png" alt="">
+这是收集到的几组数据</p>
+<p><img src="https://aiosz.github.io/post-images/1562963097120.png" alt="">
+这是MI6手机上的读卡软件</p>
+<p><img src="https://aiosz.github.io/post-images/1562963275650.png" alt="">
+这是我苹果手机上用到的开发者计算器</p>
+<h2 id="开始分析工作">开始分析工作</h2>
+<p>4位为一组，发现第一组没有变化，而第二组就开始有变化了，根据常用的套路，我确定这是倒序的金额</p>
+<p>D200 = 2.1￥
+F24E = 202.1￥
+DE49 =189.1￥
+4E48 =185.1￥
+转化规律是修改数据位置，然后进行16进制转10进制</p>
+<pre><code>ABCD → CDAB
+</code></pre>
+<p>开始实例</p>
+<p><strong>D200 → 00D2 → 进制转化</strong>
+进制转化可以使用网页版的进制转化，而我是使用苹果手机的开发者计算器
+<img src="https://aiosz.github.io/post-images/1562964153384.png" alt="">
+0是无意义字符，所以打不出来，DEC栏处就是我们需要的十进制数字，与我们的计数方法不一样，他是直接把小数点去掉，扩大百倍 。<strong>210</strong>缩小百倍后，就是我们现在金额<strong>2.1￥</strong></p>
+<p>开始实例 NO.2
+<code>ABCD → CDAB</code>
+<strong>F24E → 4EF2 →进制转化</strong>
+<img src="https://aiosz.github.io/post-images/1562994017252.png" alt="">
+DEC栏里面有我们需要的数据，缩小百倍，就是我们的202.1￥</p>
+<p>我知道最后面的一组数据是校验位，但中间的数据我分析了好久好久，在一次偶然的机会下，我发现这东西有时候会变化，有时候不变，收集了很多很多组数据后，我发现这只是记录最后一次消费机器的编号和消费次数记录。</p>
+<h3 id="校验位">校验位</h3>
+<p>当时的这个校验位计算想起来也包含了太多运气，那时候用的是网页版本。
+一次偶然，就随便把数据填到所谓的校验位计算</p>
 
           </div>
         </div>
 
         
+          <div class="next-post">
+            <a class="purple-link" href="https://aiosz.github.io/post/my-frist">
+              <h3 class="post-title">
+                下一篇：My Frist
+              </h3>
+            </a>
+          </div>
+          
       </div>
 
       
