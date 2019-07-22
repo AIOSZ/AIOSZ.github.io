@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1563044905881">
+<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1563770413984">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://aiosz.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://aiosz.github.io">
-        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1563044905881" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1563770413984" alt="" width="32px" height="32px">
       </a>
       <a href="https://aiosz.github.io">
         <h1 class="site-title">Aiosz</h1>
@@ -103,12 +103,12 @@
 <!-- more -->
 <h1 id="开始工作">开始工作</h1>
 <h2 id="数据的获取">数据的获取</h2>
-<p>我使用ACR-122U，mfoc ，MI6 ，MIFARE，完成了M1卡数据收集
-<img src="https://aiosz.github.io/post-images/1562963036454.png" alt="">
+<p>我使用ACR-122U，mfoc ，MI6 ，MIFARE，完成了M1卡数据收集<br>
+<img src="https://aiosz.github.io/post-images/1562963036454.png" alt=""><br>
 这是收集到的几组数据</p>
-<p><img src="https://aiosz.github.io/post-images/1562963097120.png" alt="">
+<p><img src="https://aiosz.github.io/post-images/1562963097120.png" alt=""><br>
 这是MI6手机上的读卡软件</p>
-<p><img src="https://aiosz.github.io/post-images/1563044160272.png" alt="">
+<p><img src="https://aiosz.github.io/post-images/1563044160272.png" alt=""><br>
 这是我苹果手机上用到的开发者计算器</p>
 <h2 id="开始分析工作">开始分析工作</h2>
 <p>4位为一组，发现第一组没有变化，而第二组就开始有变化了，根据常用的套路，我确定这是倒序的金额</p>
@@ -122,18 +122,18 @@
 <p><code>ABCD → CDAB</code></p>
 <p>开始实例</p>
 <p><strong>D200 → 00D2 → 进制转化</strong></p>
-<p>进制转化可以使用网页版的进制转化，而我是使用苹果手机的开发者计算器
-<img src="https://aiosz.github.io/post-images/1562964153384.png" alt="">
+<p>进制转化可以使用网页版的进制转化，而我是使用苹果手机的开发者计算器<br>
+<img src="https://aiosz.github.io/post-images/1562964153384.png" alt=""><br>
 0是无意义字符，所以打不出来，DEC栏处就是我们需要的十进制数字，与我们的计数方法不一样，他是直接把小数点去掉，扩大百倍 。<strong>210</strong>缩小百倍后，就是我们现在金额<strong>2.1￥</strong></p>
 <p>开始实例 NO.2</p>
 <p><code>ABCD → CDAB</code></p>
 <p><strong>F24E → 4EF2 →进制转化</strong></p>
 <p><img src="https://aiosz.github.io/post-images/1562994017252.png" alt=""></p>
 <p>DEC栏里面有我们需要的数据，缩小百倍，就是我们的202.1￥</p>
-<p>我把数据分成3处，前面那一处是金额，中间那一处是机器编号，最后一处是校验位。
+<p>我把数据分成3处，前面那一处是金额，中间那一处是机器编号，最后一处是校验位。<br>
 中间的数据我分析了好久好久。在一次偶然的机会下，我发现这中间这处的数据<strong>有时候会变化，有时候不变</strong>(重点)，收集了很多很多组数据后，我发现这只是记录最后一次消费机器的编号和消费次数记录。</p>
 <h3 id="校验位">校验位</h3>
-<p>当时的这个校验位计算想起来也包含了太多运气，那时候用的是网页版本。
+<p>当时的这个校验位计算想起来也包含了太多运气，那时候用的是网页版本。<br>
 一次偶然，就<strong>随便</strong>(运气)把数据填到所谓的校验位计算</p>
 <p><img src="https://aiosz.github.io/post-images/1563001885613.png" alt=""></p>
 <p>3B30 D200 00710006900100000000 <strong>C55F</strong>   2.1￥</p>
@@ -168,20 +168,20 @@
 <h2 id="数据分析-no2">数据分析 NO.2</h2>
 <p>下面开始分析另一种算法</p>
 <p><img src="https://aiosz.github.io/post-images/1563042402980.png" alt=""></p>
-<p>图中的数据虽然是手动构造的，但他也有分析与学习的价值。
-第一处就是金额，方法也和上面的一样，<strong>ABCD → CDAB</strong>
-位置的颠倒与进制的转化，例：
-第一组数据的金额 E803，
-先 根据 <strong>ABCD → CDAB</strong> 把<strong>E803</strong>变成<strong>03E8</strong>
+<p>图中的数据虽然是手动构造的，但他也有分析与学习的价值。<br>
+第一处就是金额，方法也和上面的一样，<strong>ABCD → CDAB</strong><br>
+位置的颠倒与进制的转化，例：<br>
+第一组数据的金额 E803，<br>
+先 根据 <strong>ABCD → CDAB</strong> 把<strong>E803</strong>变成<strong>03E8</strong><br>
 检验： 我们先打开<a href="http://tool.oschina.net/hexconvert/">进制转换的网站</a>勾选好进制选项。</p>
 <p><img src="https://aiosz.github.io/post-images/1563042852178.png" alt=""></p>
 <p>缩小百倍后正好是我们的<strong>10￥</strong></p>
 <p>第二处的数据我也是在一次偶然的机会找到解决方法</p>
 <p>关键是第 2，4组数据 ，金额位里面有<strong>重复字符</strong> ，而且第二处的数据里面也出现<strong>重复字符</strong>，我肯定这不是巧合，是可以合在一起的</p>
-<p>D<strong>00</strong>7 对应 2<strong>FF</strong>8
+<p>D<strong>00</strong>7 对应 2<strong>FF</strong>8<br>
 A<strong>00</strong>F 对应 5<strong>FF</strong>0</p>
 <p>思考良久后我尝试加一起，</p>
-<p>D007 + 2FF8  = FFFF
+<p>D007 + 2FF8  = FFFF<br>
 A00F  + 5FF0  = FFFF</p>
 <p>我把其他组的数据也试着加一起，然后成功了，每一组的第一处和第二处相加必定等于<strong>FFFF</strong></p>
 <p>第三组的数据和第一组数据一样</p>
