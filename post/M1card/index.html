@@ -12,10 +12,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1563770413984">
+<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1566498451822">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://aiosz.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -30,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://aiosz.github.io">
-        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1563770413984" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1566498451822" alt="" width="32px" height="32px">
       </a>
       <a href="https://aiosz.github.io">
         <h1 class="site-title">Aiosz</h1>
@@ -196,6 +202,25 @@ A00F  + 5FF0  = FFFF</p>
 <p>把第三组数据和不变的数据抄上就可以得到完整数据了</p>
 <p><strong>F225</strong> ECFF <strong>0DDA</strong> 1300 <strong>F225</strong> ECFF00FF00FF</p>
 <p>搞定</p>
+<h2 id="方便1">方便+1</h2>
+<p>为了方便使用数据，我写了个python2的工具，在手机上我装了个termux，可以运行python程序。</p>
+<pre><code>#coding:utf-8
+a=hex(input(&quot;请输入数字 98.23→9823:     &quot;))[2:6];
+a=str(a);
+a=str(a).zfill(4);
+b=a[2:4];
+c=a[4:6];
+d=c+b;
+f=int(d,16);
+h=int(65535-f);
+h=hex(h);
+h=str(h);
+h=str(h).zfill(6);
+h=h[2:6];
+print(str.upper(d+&quot;ECFF&quot;+h+&quot;1300&quot;+d+&quot;ECFF00FF00FF&quot;));
+</code></pre>
+<p>效果图：</p>
+<p><img src="https://aiosz.github.io/post-images/1566498445654.png" alt=""></p>
 
           </div>
         </div>
@@ -211,6 +236,12 @@ A00F  + 5FF0  = FFFF</p>
           
       </div>
 
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
       
 
       <div class="site-footer">
@@ -245,6 +276,29 @@ var app = new Vue({
 })
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '87710dc41e1ad48e4871',
+        clientSecret: 'f5b04f71706b4559848b1d77031aa76544819221',
+        repo: 'aiosz.github.io',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 

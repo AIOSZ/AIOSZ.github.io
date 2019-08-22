@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aiosz.github.io</id>
     <title>Aiosz</title>
-    <updated>2019-07-22T04:40:17.600Z</updated>
+    <updated>2019-08-22T18:27:41.418Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aiosz.github.io"/>
     <link rel="self" href="https://aiosz.github.io/atom.xml"/>
@@ -115,6 +115,25 @@ A00F  + 5FF0  = FFFF</p>
 <p>把第三组数据和不变的数据抄上就可以得到完整数据了</p>
 <p><strong>F225</strong> ECFF <strong>0DDA</strong> 1300 <strong>F225</strong> ECFF00FF00FF</p>
 <p>搞定</p>
+<h2 id="方便1">方便+1</h2>
+<p>为了方便使用数据，我写了个python2的工具，在手机上我装了个termux，可以运行python程序。</p>
+<pre><code>#coding:utf-8
+a=hex(input(&quot;请输入数字 98.23→9823:     &quot;))[2:6];
+a=str(a);
+a=str(a).zfill(4);
+b=a[2:4];
+c=a[4:6];
+d=c+b;
+f=int(d,16);
+h=int(65535-f);
+h=hex(h);
+h=str(h);
+h=str(h).zfill(6);
+h=h[2:6];
+print(str.upper(d+&quot;ECFF&quot;+h+&quot;1300&quot;+d+&quot;ECFF00FF00FF&quot;));
+</code></pre>
+<p>效果图：</p>
+<p><img src="https://aiosz.github.io/post-images/1566498445654.png" alt=""></p>
 ]]></content>
     </entry>
     <entry>
@@ -131,7 +150,8 @@ A00F  + 5FF0  = FFFF</p>
 <h2 id="孰能无惑">孰能无惑？</h2>
 <p><img src="https://aiosz.github.io/post-images/1562936025781.jpg" alt=""></p>
 <h3 id="客亦知夫水与月乎">客亦知夫水与月乎？</h3>
-<p>123</p>
+<p>123<br>
+<strong>yui</strong></p>
 ]]></content>
     </entry>
     <entry>
@@ -221,9 +241,9 @@ Bob--&gt;Alice: I am good thanks!
 <h3 id="复选框">复选框</h3>
 <p>使用 <code>- [ ]</code> 和 <code>- [x]</code> 语法可以创建复选框，实现 todo-list 等功能。例如：</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3417809"><label class="task-list-item-label" for="task-item-3417809"> 已完成事项</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3126301"><label class="task-list-item-label" for="task-item-3126301"> 待办事项1</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-836907"><label class="task-list-item-label" for="task-item-836907"> 待办事项2</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2819652"><label class="task-list-item-label" for="task-item-2819652"> 已完成事项</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-97965"><label class="task-list-item-label" for="task-item-97965"> 待办事项1</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8698216"><label class="task-list-item-label" for="task-item-8698216"> 待办事项2</label></li>
 </ul>
 <blockquote>
 <p><strong>注意：<strong>目前支持尚不完全，在印象笔记中勾选复选框是无效、不能同步的，所以必须在</strong>马克飞象</strong>中修改 Markdown 原文才可生效。下个版本将会全面支持。</p>
