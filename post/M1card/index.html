@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1566498451822">
+<link rel="shortcut icon" href="https://aiosz.github.io/favicon.ico?v=1566542323942">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://aiosz.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://aiosz.github.io">
-        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1566498451822" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://aiosz.github.io/images/avatar.png?v=1566542323942" alt="" width="32px" height="32px">
       </a>
       <a href="https://aiosz.github.io">
         <h1 class="site-title">Aiosz</h1>
@@ -221,6 +221,22 @@ print(str.upper(d+&quot;ECFF&quot;+h+&quot;1300&quot;+d+&quot;ECFF00FF00FF&quot;
 </code></pre>
 <p>效果图：</p>
 <p><img src="https://aiosz.github.io/post-images/1566498445654.png" alt=""></p>
+<h2 id="方便1-2">方便+1</h2>
+<p>我又写了个python3的工具</p>
+<p>#coding:utf-8</p>
+<pre><code>#coding:utf-8
+a=str(hex(int(input(&quot;请输入数字(98.23元→9823): &quot;))))[2:6];
+a=str(a).zfill(4);
+b=a[2:]+a[:2];
+c=int(b,16);
+d=int(65535-c);
+d=str(hex(d))[2:6];
+e=str(d).zfill(4)
+print(str.upper(b+&quot;ECFF&quot;+e+&quot;1300&quot;+b+&quot;ECFF00FF00FF&quot;));
+
+</code></pre>
+<p>效果图：</p>
+<p><img src="https://aiosz.github.io/post-images/1566542287310.png" alt=""></p>
 
           </div>
         </div>
